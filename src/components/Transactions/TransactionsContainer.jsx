@@ -2,35 +2,59 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Transactions from "./Transactions";
-import TransactionsDetail from "../TransactionsDetail/TransactionsDetail";
-import { fetchTransactions } from "../../actions/transactions";
+import {
+  fetchTransactions,
+  fetchTransactionsFromLocalMock,
+  getSelectedTransactions
+} from "../../actions/transactions";
 
 class TransactionsContainer extends Component {
   constructor(props) {
     super(props);
+
+    this.handleRowSelection = this.handleRowSelection.bind(this);
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchTransactions());
+    // This call does not work due to a cross domain issue
+    //this.props.fetchTransactions();
+
+    // this.props.dispatch(fetchTransactionsFromLocalMock());
+    this.props.fetchTransactionsFromLocalMock();
   }
 
-  componentWillReceiveProps(nextProps) {}
+  handleRowSelection(row) {
+    this.props.getSelectedTransactions(row);
+  }
 
   render() {
-    const transactions = [];
-    console.log(this.props.transactions);
-    return null;
+    const { transactions } = this.props;
     return (
-      <div>
-        <Transactions transactions={transactions} />
-        <TransactionsDetail transactions={transactions} />
-      </div>
+      <Transactions
+        transactions={transactions}
+        onSelectOptions={{
+          mode: "radio",
+          clickToSelect: true,
+          onSelect: this.handleRowSelection
+        }}
+      />
     );
   }
 }
 
 const mapStateToProps = state => ({
-  transactions: state.transactions
+  transactions: state.transactions.data
 });
 
-export default connect(mapStateToProps)(TransactionsContainer);
+const mapDispatchToProps = dispatch => ({
+  getSelectedTransactions: selectedTransactions =>
+    dispatch(getSelectedTransactions(selectedTransactions)),
+  fetchTransactionsFromLocalMock: () =>
+    dispatch(fetchTransactionsFromLocalMock()),
+  fetchTransactions: () => dispatch(fetchTransactions())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TransactionsContainer);

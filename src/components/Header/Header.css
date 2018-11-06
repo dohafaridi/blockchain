@@ -1,0 +1,39 @@
+.Header {
+  display: flex;
+  height: 90px;
+  color: #fff;
+}
+
+.Header_item:nth-child(1) {
+  background: #363d45;
+  width: 20%;
+  padding-top: 20px;
+  font-size: 14px;
+}
+
+.Header_item:nth-child(2) {
+  background: #ecb02d;
+  width: 60%;
+}
+
+.Header_item:nth-child(3) {
+  background: #f6f6f6;
+  width: 20%;
+}
+
+@media (max-width: 767px) {
+  .Header {
+    display: block;
+    height: auto;
+  }
+
+  .Header_item:nth-child(1) {
+    padding: 20px 0;
+    width: 100%;
+  }
+
+  .Header_item:nth-child(2),
+  .Header_item:nth-child(3) {
+    display: none;
+  }
+}

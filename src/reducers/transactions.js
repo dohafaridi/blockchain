@@ -8,7 +8,7 @@ const transactionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_TRANSACTIONS:
       return {
-        data: action.transactions
+        data: action.transactions[0].transactions
       };
 
     default:

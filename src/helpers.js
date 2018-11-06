@@ -16,4 +16,4 @@ const jsonNoCacheOptions = {
  * @return {Promise} - A promise with the data content
  */
 export const fetchJson = url =>
-  fetch(url).then(response => response.json());
+  fetch(url, jsonNoCacheOptions).then(response => response.json());

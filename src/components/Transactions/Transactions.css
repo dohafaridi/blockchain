@@ -1,0 +1,32 @@
+.Transactions {
+  width: 60%;
+  background: #fcfcfc;
+  padding-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  table-layout: fixed;
+}
+
+thead th,
+tbody td {
+  padding: 10px 0;
+}
+
+thead th {
+  cursor: pointer;
+}
+
+tbody td {
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .Transactions {
+    display: block;
+    width: 100%;
+  }
+}
