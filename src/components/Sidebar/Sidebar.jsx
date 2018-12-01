@@ -1,41 +1,43 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import "./SideBar.css";
 
 const Sidebar = () => (
   <div className="Sidebar">
     <ul className="Sidebar__menu">
       <li>
-        <a title="Overview">Overview</a>
+        <Link to="/" title="Overview">Overview</Link>
       </li>
       <li>
-        <a href="#" title="Transactions">
+        <Link to="transactions" href="#" title="Transactions">
           Transactions
-        </a>
+        </Link>
+      </li>
+      <li to="/" className="Sidebar__menu--line" />
+      <li>
+        <Link to="/" title="Transfers">Transfers</Link>
+      </li>
+      <li>
+        <Link to="/" title="Invoices">Invoices</Link>
       </li>
       <li className="Sidebar__menu--line" />
       <li>
-        <a title="Transfers">Transfers</a>
+        <Link to="/" title="Manage cards">Manage cards</Link>
       </li>
       <li>
-        <a title="Invoices">Invoices</a>
+        <Link to="/" title="Manage account">Manage account</Link>
       </li>
-      <li className="Sidebar__menu--line" />
+      <li to="/" className="Sidebar__menu--line" />
       <li>
-        <a title="Manage cards">Manage cards</a>
-      </li>
-      <li>
-        <a title="Manage account">Manage account</a>
-      </li>
-      <li className="Sidebar__menu--line" />
-      <li>
-        <a title="Team">Team</a>
+        <Link to="/" title="Team">Team</Link>
       </li>
       <li>
-        <a title="Intergration">Intergration</a>
+        <Link to="/" title="Intergration">Intergration</Link>
       </li>
       <li>
-        <a title="Settings">Settings</a>
+        <Link to="/" title="Settings">Settings</Link>
       </li>
     </ul>
   </div>

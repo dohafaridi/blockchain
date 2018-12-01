@@ -1,5 +1,7 @@
 import React from "react";
+import { Route } from "react-router-dom";
 
+import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar";
 import Transactions from "./components/Transactions";
@@ -15,8 +17,9 @@ class App extends React.Component {
         <Header />
         <main>
           <Sidebar />
-          <Transactions />
-          <TransactionsDetail />
+          <Route exact path="/" component={Home} />
+          <Route path="/transactions" component={Transactions} />
+          <Route path="/transactions" component={TransactionsDetail} />
         </main>
       </div>
     );
